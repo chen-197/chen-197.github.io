@@ -1,49 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Hello World</title>
-    <url>/2021/06/19/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-]]></content>
-  </entry>
-  <entry>
-    <title>关于此博客</title>
-    <url>/2021/06/21/%E5%85%B3%E4%BA%8E%E6%AD%A4%E5%8D%9A%E5%AE%A2/</url>
-    <content><![CDATA[<p>近日由于种种原因不得已放弃了以前的博客（devil-197.github.io）,便重新建了一个新的博客。</p>
-<p>单从外表上看，新博客的颜值就比旧博客高了不少（当然主题是我借（bai）鉴（piao）的~），现在贴上旧博客的截图，当然旧博客截止到现在（06/21/2021）并没有消失，各位仍可以进去观其全貌。</p>
-<p>旧博客：<br><img src="/2021/06/21/%E5%85%B3%E4%BA%8E%E6%AD%A4%E5%8D%9A%E5%AE%A2/%E4%BB%A5%E5%89%8D%E5%8D%9A%E5%AE%A2.png" alt="旧博客"></p>
-<p>好吧，旧博客其实也挺简洁的，就是各位有没有被突然响起的音乐给吓到（没听到的当我没说）~</p>
-<p>内容上看嘛，新博客截止到2021年6月21日11点46分仅有两篇文章，不过因为是新建的博客，情有可原嘛。（我并不打算把旧博客里的文章搬过来），相信将来这篇博客里的文章也会多起来的。</p>
-<p>还有，本博客部分内容（如部分图片，代码等）来自网络，若侵犯到您的合法权益，请联系我。</p>
-<p>我的邮箱：<a href="mailto:&#99;&#x68;&#101;&#x6e;&#x2d;&#x31;&#57;&#55;&#64;&#x6f;&#x75;&#116;&#x6c;&#111;&#111;&#x6b;&#x2e;&#x63;&#x6f;&#109;">&#99;&#x68;&#101;&#x6e;&#x2d;&#x31;&#57;&#55;&#64;&#x6f;&#x75;&#116;&#x6c;&#111;&#111;&#x6b;&#x2e;&#x63;&#x6f;&#109;</a></p>
-<p>我的QQ：1979273790</p>
-<p>以上便是本文的全部内容，感谢您的阅读。</p>
-]]></content>
-      <categories>
-        <category>关于</category>
-      </categories>
-      <tags>
-        <tag>关于</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>UEFI+GPT安装Archlinux简易教程</title>
     <url>/2021/07/31/UEFI-GPT%E5%AE%89%E8%A3%85Archlinux%E7%AE%80%E6%98%93%E6%95%99%E7%A8%8B/</url>
     <content><![CDATA[<h3 id="1-下载镜像，制作安装U盘，使用U盘启动（略）"><a href="#1-下载镜像，制作安装U盘，使用U盘启动（略）" class="headerlink" title="1.下载镜像，制作安装U盘，使用U盘启动（略）"></a>1.下载镜像，制作安装U盘，使用U盘启动（略）</h3><h3 id="2-启动后，首先连接网络"><a href="#2-启动后，首先连接网络" class="headerlink" title="2.启动后，首先连接网络"></a>2.启动后，首先连接网络</h3><p>使用WiFi连接互联网:  </p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">wifi-menu</span><br></pre></td></tr></table></figure>
-<p>或直接使用网线连接互联网<br>对连接情况进行测试</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">iwctl device list</span><br><span class="line"><span class="comment"># 将DEVICE换成你的网络设备</span></span><br><span class="line">iwctl station DEVICE scan</span><br><span class="line">iwctl station DEVICE get-network</span><br><span class="line"><span class="comment"># 如果有密码(将PASSWORD换成密码，将DEVICE换成你的网络设备，将NETWORK换成你要用的网络)</span></span><br><span class="line">iwctl --passphrase PASSWORD station DEVICE connect NETWORK</span><br><span class="line"><span class="comment"># 如果没有密码</span></span><br><span class="line">iwctl DEVICE connect NETWORK</span><br></pre></td></tr></table></figure>
+<p>或直接使用网线连接互联网  </p>
+<p>对连接情况进行测试</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ping www.baidu.com</span><br></pre></td></tr></table></figure>
 
 <h3 id="3-同步网络时间"><a href="#3-同步网络时间" class="headerlink" title="3.同步网络时间"></a>3.同步网络时间</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">timedatectl set-ntp <span class="literal">true</span></span><br></pre></td></tr></table></figure>
@@ -134,6 +97,44 @@
       </categories>
       <tags>
         <tag>安装Arch</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hello World</title>
+    <url>/2021/06/19/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>关于此博客</title>
+    <url>/2021/06/21/%E5%85%B3%E4%BA%8E%E6%AD%A4%E5%8D%9A%E5%AE%A2/</url>
+    <content><![CDATA[<p>近日由于种种原因不得已放弃了以前的博客（devil-197.github.io）,便重新建了一个新的博客。</p>
+<p>单从外表上看，新博客的颜值就比旧博客高了不少（当然主题是我借（bai）鉴（piao）的~），现在贴上旧博客的截图，当然旧博客截止到现在（06/21/2021）并没有消失，各位仍可以进去观其全貌。</p>
+<p>旧博客：<br><img src="/2021/06/21/%E5%85%B3%E4%BA%8E%E6%AD%A4%E5%8D%9A%E5%AE%A2/%E4%BB%A5%E5%89%8D%E5%8D%9A%E5%AE%A2.png" alt="旧博客"></p>
+<p>好吧，旧博客其实也挺简洁的，就是各位有没有被突然响起的音乐给吓到（没听到的当我没说）~</p>
+<p>内容上看嘛，新博客截止到2021年6月21日11点46分仅有两篇文章，不过因为是新建的博客，情有可原嘛。（我并不打算把旧博客里的文章搬过来），相信将来这篇博客里的文章也会多起来的。</p>
+<p>还有，本博客部分内容（如部分图片，代码等）来自网络，若侵犯到您的合法权益，请联系我。</p>
+<p>我的邮箱：<a href="mailto:&#x63;&#x68;&#x65;&#x6e;&#x2d;&#x31;&#57;&#55;&#x40;&#x6f;&#x75;&#116;&#108;&#111;&#111;&#107;&#46;&#x63;&#111;&#x6d;">&#x63;&#x68;&#x65;&#x6e;&#x2d;&#x31;&#57;&#55;&#x40;&#x6f;&#x75;&#116;&#108;&#111;&#111;&#107;&#46;&#x63;&#111;&#x6d;</a></p>
+<p>我的QQ：1979273790</p>
+<p>以上便是本文的全部内容，感谢您的阅读。</p>
+]]></content>
+      <categories>
+        <category>关于</category>
+      </categories>
+      <tags>
+        <tag>关于</tag>
       </tags>
   </entry>
   <entry>
