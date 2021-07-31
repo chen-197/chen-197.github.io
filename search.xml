@@ -79,7 +79,7 @@
 <p>然后</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">systemctl <span class="built_in">enable</span> lightdm</span><br></pre></td></tr></table></figure>
 <p>假如你要用其他的DE或者WM，请自行查阅archwiki。  </p>
-<h3 id="20-安装networkmanager（假如之前未安装）"><a href="#20-安装networkmanager（假如之前未安装）" class="headerlink" title="20.安装networkmanager（假如之前未安装）"></a>20.安装networkmanager（假如之前未安装）</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pacman -S networkmanager</span><br></pre></td></tr></table></figure>
+<h3 id="20-安装networkmanager（假如之前未安装）"><a href="#20-安装networkmanager（假如之前未安装）" class="headerlink" title="20.安装networkmanager（假如之前未安装）"></a>20.安装networkmanager（假如之前未安装）</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pacman -S networkmanager</span><br><span class="line">systemctl <span class="built_in">enable</span> NetworkManager</span><br></pre></td></tr></table></figure>
 <h3 id="21-安装触控板驱动（假如需要）"><a href="#21-安装触控板驱动（假如需要）" class="headerlink" title="21.安装触控板驱动（假如需要）"></a>21.安装触控板驱动（假如需要）</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pacman -S xf86-input-synaptics</span><br></pre></td></tr></table></figure>
 <h3 id="22-安装蓝牙驱动（假如需要）"><a href="#22-安装蓝牙驱动（假如需要）" class="headerlink" title="22.安装蓝牙驱动（假如需要）"></a>22.安装蓝牙驱动（假如需要）</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pacman -S bluez bluez-utils</span><br><span class="line">systemctl <span class="built_in">enable</span> bluetooth.service</span><br></pre></td></tr></table></figure>
 <h3 id="23-退出chroot"><a href="#23-退出chroot" class="headerlink" title="23.退出chroot"></a>23.退出chroot</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">exit</span></span><br></pre></td></tr></table></figure>
@@ -119,7 +119,7 @@
 <p>好吧，旧博客其实也挺简洁的，就是各位有没有被突然响起的音乐给吓到（没听到的当我没说）~</p>
 <p>内容上看嘛，新博客截止到2021年6月21日11点46分仅有两篇文章，不过因为是新建的博客，情有可原嘛。（我并不打算把旧博客里的文章搬过来），相信将来这篇博客里的文章也会多起来的。</p>
 <p>还有，本博客部分内容（如部分图片，代码等）来自网络，若侵犯到您的合法权益，请联系我。</p>
-<p>我的邮箱：<a href="mailto:&#x63;&#104;&#101;&#x6e;&#45;&#49;&#x39;&#x37;&#x40;&#111;&#x75;&#x74;&#108;&#111;&#x6f;&#107;&#46;&#99;&#111;&#x6d;">&#x63;&#104;&#101;&#x6e;&#45;&#49;&#x39;&#x37;&#x40;&#111;&#x75;&#x74;&#108;&#111;&#x6f;&#107;&#46;&#99;&#111;&#x6d;</a></p>
+<p>我的邮箱：<a href="mailto:&#99;&#104;&#x65;&#x6e;&#45;&#49;&#x39;&#x37;&#x40;&#x6f;&#x75;&#x74;&#108;&#x6f;&#x6f;&#x6b;&#46;&#99;&#x6f;&#x6d;">&#99;&#104;&#x65;&#x6e;&#45;&#49;&#x39;&#x37;&#x40;&#x6f;&#x75;&#x74;&#108;&#x6f;&#x6f;&#x6b;&#46;&#99;&#x6f;&#x6d;</a></p>
 <p>我的QQ：1979273790</p>
 <p>以上便是本文的全部内容，感谢您的阅读。</p>
 ]]></content>
@@ -128,6 +128,18 @@
       </categories>
       <tags>
         <tag>关于</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>聊天专用页</title>
+    <url>/2021/07/25/%E8%81%8A%E5%A4%A9%E4%B8%93%E7%94%A8%E9%A1%B5/</url>
+    <content><![CDATA[<p>本页面用于闲聊（在评论区）</p>
+]]></content>
+      <categories>
+        <category>闲聊</category>
+      </categories>
+      <tags>
+        <tag>闲聊</tag>
       </tags>
   </entry>
   <entry>
@@ -149,18 +161,6 @@
       </categories>
       <tags>
         <tag>日常学习打卡</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>聊天专用页</title>
-    <url>/2021/07/25/%E8%81%8A%E5%A4%A9%E4%B8%93%E7%94%A8%E9%A1%B5/</url>
-    <content><![CDATA[<p>本页面用于闲聊（在评论区）</p>
-]]></content>
-      <categories>
-        <category>闲聊</category>
-      </categories>
-      <tags>
-        <tag>闲聊</tag>
       </tags>
   </entry>
 </search>

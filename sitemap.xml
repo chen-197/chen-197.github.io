@@ -60,14 +60,14 @@
   </url>
   
   <url>
-    <loc>http://example.com/tags/%E6%97%A5%E5%B8%B8%E5%AD%A6%E4%B9%A0%E6%89%93%E5%8D%A1/</loc>
+    <loc>http://example.com/tags/%E9%97%B2%E8%81%8A/</loc>
     <lastmod>2021-07-31</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://example.com/tags/%E9%97%B2%E8%81%8A/</loc>
+    <loc>http://example.com/tags/%E6%97%A5%E5%B8%B8%E5%AD%A6%E4%B9%A0%E6%89%93%E5%8D%A1/</loc>
     <lastmod>2021-07-31</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -90,14 +90,14 @@
   </url>
   
   <url>
-    <loc>http://example.com/categories/%E6%89%93%E5%8D%A1/</loc>
+    <loc>http://example.com/categories/%E9%97%B2%E8%81%8A/</loc>
     <lastmod>2021-07-31</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://example.com/categories/%E9%97%B2%E8%81%8A/</loc>
+    <loc>http://example.com/categories/%E6%89%93%E5%8D%A1/</loc>
     <lastmod>2021-07-31</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
