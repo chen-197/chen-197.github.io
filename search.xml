@@ -16,8 +16,10 @@
 <p>不想用vim的话，用nano也可以<br>推荐把163源放到最前面，其他的国内源也可以，建议多写几行，然后把国外源全删掉<br>具体换源方法参照各大开源镜像站的介绍</p>
 <h3 id="5-磁盘分区"><a href="#5-磁盘分区" class="headerlink" title="5.磁盘分区"></a>5.磁盘分区</h3><p>使用以下命令查看磁盘</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">lsblk</span><br></pre></td></tr></table></figure>
+<p>或者</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">fdisk -l</span><br></pre></td></tr></table></figure>
 <p>使用以下命令进行系统分区</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">fdisk /dev/sdX  <span class="comment">#sdX换成你要指定的磁盘</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">fdisk /dev/XXX  <span class="comment">#XXX换成你要指定的磁盘</span></span><br></pre></td></tr></table></figure>
 <p>不想用fdisk的话，用cfdisk也可以。修改完记得写入保存。<br>将要分3个区：ESP，根，交换。如果你想使用交换文件，交换分区可以不要。你也可以分一个home区，看你是否需要了。<br>一般来说，ESP几百MB完全足够，根分区推荐给大一点（一般来说一百多G够日常使用，有别的需求可以更多），swap分区的大小建议与你的运行内存大小一致。<br>如果你没有ESP，那就需要新建。注意！如果你已经有ESP，那么里面很可能有其他系统的引导文件，下面的格式化（mkfs）步骤一定要慎重！<br>为了方便描述，现在规定：<br>ESP是/dev/sda1<br>根是/dev/sda2<br>swap是/dev/sda3<br>在接下来的安装过程中，请结合自己实际情况修改<br>格式化ESP：</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mkfs.vfat /dev/sda1</span><br></pre></td></tr></table></figure>
 <p>格式化根分区：</p>
@@ -127,7 +129,7 @@
 <p>好吧，旧博客其实也挺简洁的，就是各位有没有被突然响起的音乐给吓到（没听到的当我没说）~</p>
 <p>内容上看嘛，新博客截止到2021年6月21日11点46分仅有两篇文章，不过因为是新建的博客，情有可原嘛。（我并不打算把旧博客里的文章搬过来），相信将来这篇博客里的文章也会多起来的。</p>
 <p>还有，本博客部分内容（如部分图片，代码等）来自网络，若侵犯到您的合法权益，请联系我。</p>
-<p>我的邮箱：<a href="mailto:&#x63;&#x68;&#101;&#x6e;&#45;&#x31;&#x39;&#x37;&#x40;&#x6f;&#117;&#x74;&#108;&#111;&#111;&#x6b;&#x2e;&#99;&#x6f;&#x6d;">&#x63;&#x68;&#101;&#x6e;&#45;&#x31;&#x39;&#x37;&#x40;&#x6f;&#117;&#x74;&#108;&#111;&#111;&#x6b;&#x2e;&#99;&#x6f;&#x6d;</a></p>
+<p>我的邮箱：<a href="mailto:&#99;&#x68;&#101;&#110;&#45;&#x31;&#x39;&#x37;&#x40;&#x6f;&#117;&#116;&#108;&#111;&#111;&#107;&#x2e;&#x63;&#111;&#109;">&#99;&#x68;&#101;&#110;&#45;&#x31;&#x39;&#x37;&#x40;&#x6f;&#117;&#116;&#108;&#111;&#111;&#107;&#x2e;&#x63;&#111;&#109;</a></p>
 <p>我的QQ：1979273790</p>
 <p>以上便是本文的全部内容，感谢您的阅读。</p>
 ]]></content>
