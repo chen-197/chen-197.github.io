@@ -3,7 +3,7 @@
   <entry>
     <title>UEFI+GPT安装Archlinux简易教程</title>
     <url>/2021/07/31/UEFI-GPT%E5%AE%89%E8%A3%85Archlinux%E7%AE%80%E6%98%93%E6%95%99%E7%A8%8B/</url>
-    <content><![CDATA[<p>温馨提示：只用过deepin/UOS的请绕道  </p>
+    <content><![CDATA[<p>温馨提示：三思而后行，切忌在未理解指令具体含义之前直接复制粘贴！！！      </p>
 <h3 id="1-下载镜像，制作安装U盘，使用U盘启动（具体步骤略）"><a href="#1-下载镜像，制作安装U盘，使用U盘启动（具体步骤略）" class="headerlink" title="1.下载镜像，制作安装U盘，使用U盘启动（具体步骤略）"></a>1.下载镜像，制作安装U盘，使用U盘启动（具体步骤略）</h3><p>贴上下载页面地址<br><a href="https://archlinux.org/download/">https://archlinux.org/download/</a></p>
 <h3 id="2-启动后，首先连接网络"><a href="#2-启动后，首先连接网络" class="headerlink" title="2.启动后，首先连接网络"></a>2.启动后，首先连接网络</h3><p>使用WiFi连接互联网:  </p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">iwctl device list</span><br><span class="line"><span class="comment"># 将DEVICE换成你的网络设备</span></span><br><span class="line">iwctl station DEVICE scan</span><br><span class="line">iwctl station DEVICE get-network</span><br><span class="line"><span class="comment"># 如果有密码(将PASSWORD换成密码，将DEVICE换成你的网络设备，将NETWORK换成你要用的网络)</span></span><br><span class="line">iwctl --passphrase PASSWORD station DEVICE connect NETWORK</span><br><span class="line"><span class="comment"># 如果没有密码</span></span><br><span class="line">iwctl DEVICE connect NETWORK</span><br></pre></td></tr></table></figure>
@@ -112,7 +112,7 @@
 <p>好吧，旧博客其实也挺简洁的，就是各位有没有被突然响起的音乐给吓到（没听到的当我没说）~</p>
 <p>内容上看嘛，新博客截止到2021年6月21日11点46分仅有两篇文章，不过因为是新建的博客，情有可原嘛。（我并不打算把旧博客里的文章搬过来），相信将来这篇博客里的文章也会多起来的。</p>
 <p>还有，本博客部分内容（如部分图片，代码等）来自网络，若侵犯到您的合法权益，请联系我。</p>
-<p>我的邮箱：<a href="mailto:&#99;&#104;&#x65;&#x6e;&#45;&#49;&#57;&#55;&#64;&#111;&#117;&#x74;&#x6c;&#111;&#x6f;&#107;&#46;&#99;&#111;&#x6d;">&#99;&#104;&#x65;&#x6e;&#45;&#49;&#57;&#55;&#64;&#111;&#117;&#x74;&#x6c;&#111;&#x6f;&#107;&#46;&#99;&#111;&#x6d;</a></p>
+<p>我的邮箱：<a href="mailto:&#x63;&#104;&#101;&#x6e;&#45;&#49;&#x39;&#x37;&#64;&#111;&#117;&#116;&#x6c;&#x6f;&#x6f;&#107;&#x2e;&#99;&#x6f;&#109;">&#x63;&#104;&#101;&#x6e;&#45;&#49;&#x39;&#x37;&#64;&#111;&#117;&#116;&#x6c;&#x6f;&#x6f;&#107;&#x2e;&#99;&#x6f;&#109;</a></p>
 <p>我的QQ：1979273790</p>
 <p>以上便是本文的全部内容，感谢您的阅读。</p>
 ]]></content>
@@ -121,18 +121,6 @@
       </categories>
       <tags>
         <tag>关于</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>聊天专用页</title>
-    <url>/2021/07/25/%E8%81%8A%E5%A4%A9%E4%B8%93%E7%94%A8%E9%A1%B5/</url>
-    <content><![CDATA[<p>本页面用于闲聊（在评论区）</p>
-]]></content>
-      <categories>
-        <category>闲聊</category>
-      </categories>
-      <tags>
-        <tag>闲聊</tag>
       </tags>
   </entry>
   <entry>
@@ -154,6 +142,18 @@
       </categories>
       <tags>
         <tag>日常学习打卡</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>聊天专用页</title>
+    <url>/2021/07/25/%E8%81%8A%E5%A4%A9%E4%B8%93%E7%94%A8%E9%A1%B5/</url>
+    <content><![CDATA[<p>本页面用于闲聊（在评论区）</p>
+]]></content>
+      <categories>
+        <category>闲聊</category>
+      </categories>
+      <tags>
+        <tag>闲聊</tag>
       </tags>
   </entry>
 </search>
