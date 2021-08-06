@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://example.com/2021/08/07/%E7%BD%91%E6%98%93%E4%BA%91%E5%9B%9B%E5%A4%A7%E7%89%B9%E8%89%B2%E6%A6%9C%E5%8D%95%E9%9F%B3%E4%B9%90%E4%B8%8B%E8%BD%BD-py/</loc>
+    
+    <lastmod>2021-08-06</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://example.com/2021/07/31/UEFI-GPT%E5%AE%89%E8%A3%85Archlinux%E7%AE%80%E6%98%93%E6%95%99%E7%A8%8B/</loc>
     
     <lastmod>2021-08-05</lastmod>
@@ -74,6 +81,13 @@
   </url>
   
   <url>
+    <loc>http://example.com/tags/Python/</loc>
+    <lastmod>2021-08-06</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://example.com/tags/%E9%97%B2%E8%81%8A/</loc>
     <lastmod>2021-08-06</lastmod>
     <changefreq>daily</changefreq>
@@ -98,6 +112,13 @@
   
   <url>
     <loc>http://example.com/categories/%E6%89%93%E5%8D%A1/</loc>
+    <lastmod>2021-08-06</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://example.com/categories/%E4%BB%A3%E7%A0%81/</loc>
     <lastmod>2021-08-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
