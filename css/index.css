@@ -1392,7 +1392,7 @@ input::placeholder {
   z-index: -999;
   width: 100%;
   height: 100%;
-  background: url(https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fi0.hdslb.com%2Fbfs%2Farticle%2F7f00fd46d3753019d95d3c2406837fa25633d02f.png&refer=http%3A%2F%2Fi0.hdslb.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1659765348&t=e3d546ab4e416610f0e161c2fc8f7553);
+  background: url(http://i0.hdslb.com/bfs/article/7f00fd46d3753019d95d3c2406837fa25633d02f.png);
   background-attachment: local;
   background-position: center;
   background-size: cover;
