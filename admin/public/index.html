@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>博客后台管理</title>
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css">
+</head>
+<body>
+  <aside id="sidebar">
+    <div class="sidebar-head">
+      <h1>文章</h1>
+      <button id="new-btn" title="新建文章">＋ 新建</button>
+    </div>
+    <ul id="post-list"></ul>
+  </aside>
+
+  <main id="editor">
+    <div class="toolbar">
+      <input id="title" placeholder="文章标题">
+      <button id="save-btn" class="primary">保存</button>
+      <button id="delete-btn" class="danger" style="display:none">删除</button>
+    </div>
+
+    <div class="meta-row">
+      <label>日期<input id="date" placeholder="YYYY-MM-DD HH:mm"></label>
+      <label>标签<input id="tags" placeholder="逗号分隔"></label>
+      <label>分类<input id="categories" placeholder="逗号分隔"></label>
+      <label class="draft-label"><input type="checkbox" id="draft"> 草稿</label>
+    </div>
+
+    <div class="panes">
+      <textarea id="content" placeholder="Markdown 正文，支持 [[toc]] 目录占位符…" spellcheck="false"></textarea>
+      <div id="preview" class="post-content"><p class="hint">预览区域</p></div>
+    </div>
+
+    <div id="status"></div>
+  </main>
+
+  <script src="/app.js"></script>
+</body>
+</html>

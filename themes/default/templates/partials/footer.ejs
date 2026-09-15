@@ -1,0 +1,21 @@
+</main>
+<footer class="site-footer">
+  <div class="container">
+    <p>&copy; <%= new Date().getFullYear() %> <%= site.author %> · 由 Node.js 静态生成器驱动 · <a href="/feed.xml">RSS</a></p>
+  </div>
+</footer>
+<% if (dev) { %>
+<script>
+  // 本地预览热更新：轮询构建版本，变化即刷新
+  let __v = null;
+  setInterval(async () => {
+    try {
+      const r = await fetch('/__version').then((res) => res.json());
+      if (__v === null) __v = r.version;
+      else if (r.version !== __v) location.reload();
+    } catch (e) { /* 服务重启中，忽略 */ }
+  }, 1000);
+</script>
+<% } %>
+</body>
+</html>

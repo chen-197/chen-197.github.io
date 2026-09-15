@@ -1,0 +1,46 @@
+<%- include('partials/head.ejs') %>
+<%- include('partials/header.ejs') %>
+
+<article class="post">
+  <h1 class="post-title"><%= post.title %></h1>
+  <p class="post-meta">
+    <time datetime="<%= post.date.toISOString() %>"><%= post.dateFormatted %></time>
+    <% post.categories.forEach((c) => { %>
+      · <a class="meta-link" href="/categories/<%= encodeURIComponent(c) %>/"><%= c %></a>
+    <% }) %>
+    <% post.tags.forEach((t) => { %>
+      <a class="tag" href="/tags/<%= encodeURIComponent(t) %>/">#<%= t %></a>
+    <% }) %>
+  </p>
+  <div class="post-content">
+    <%- post.content %>
+  </div>
+</article>
+
+<% if (prev || next) { %>
+  <nav class="post-nav">
+    <span><% if (prev) { %><a href="<%= prev.url %>">← <%= prev.title %></a><% } %></span>
+    <span><% if (next) { %><a href="<%= next.url %>"><%= next.title %> →</a><% } %></span>
+  </nav>
+<% } %>
+
+<% if (giscus.enabled) { %>
+  <section class="comments">
+    <script src="https://giscus.app/client.js"
+      data-repo="<%= giscus.repo %>"
+      data-repo-id="<%= giscus.repoId %>"
+      data-category="<%= giscus.category %>"
+      data-category-id="<%= giscus.categoryId %>"
+      data-mapping="<%= giscus.mapping %>"
+      data-strict="0"
+      data-reactions-enabled="1"
+      data-emit-metadata="0"
+      data-input-position="top"
+      data-theme="<%= giscus.theme %>"
+      data-lang="zh-CN"
+      crossorigin="anonymous"
+      async></script>
+  </section>
+<% } %>
+
+<%- include('partials/footer.ejs') %>
