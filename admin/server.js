@@ -5,7 +5,7 @@ const express = require('express');
 const matter = require('gray-matter');
 const dayjs = require('dayjs');
 const { build } = require('../src/core/generator');
-const { renderMarkdown } = require('../src/core/parser');
+const { renderMarkdown, resolveUpdated } = require('../src/core/parser');
 const { slugify } = require('../src/utils');
 
 /**
@@ -35,23 +35,31 @@ function start(config) {
     }
   };
 
-  // 文章列表（含草稿）
+  // 文章列表（含草稿）：按修改时间倒序，与站点列表同一套口径
   app.get('/api/posts', (req, res) => {
     const posts = fs
       .readdirSync(postsDir)
       .filter((f) => f.endsWith('.md'))
       .map((f) => {
-        const { data } = matter(fs.readFileSync(path.join(postsDir, f), 'utf8'));
+        const filePath = path.join(postsDir, f);
+        const { data } = matter(fs.readFileSync(filePath, 'utf8'));
+        const date = new Date(data.date || f.slice(0, 10));
+        const updated = resolveUpdated(data, filePath, config.root);
         return {
           file: f,
           title: data.title || f,
-          date: dayjs(data.date || f.slice(0, 10)).format('YYYY-MM-DD HH:mm'),
+          date: dayjs(date).format('YYYY-MM-DD HH:mm'),
+          updated: dayjs(updated).format('YYYY-MM-DD HH:mm'),
+          isUpdated: updated - date > 24 * 60 * 60 * 1000,
           tags: [].concat(data.tags || []),
           categories: [].concat(data.categories || []),
           draft: !!data.draft,
+          dateAt: date,
+          updatedAt: updated,
         };
       })
-      .sort((a, b) => new Date(b.date) - new Date(a.date));
+      .sort((a, b) => b.updatedAt - a.updatedAt || b.dateAt - a.dateAt)
+      .map(({ dateAt, updatedAt, ...item }) => item);
     res.json(posts);
   });
 

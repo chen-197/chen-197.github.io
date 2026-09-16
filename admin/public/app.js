@@ -40,7 +40,8 @@ async function loadList() {
     title.textContent = (p.draft ? '【草稿】' : '') + p.title;
     const meta = document.createElement('span');
     meta.className = 'item-meta';
-    meta.textContent = p.date;
+    // 列表按修改时间倒序，这里把修改时间也显示出来，便于核对顺序
+    meta.textContent = p.isUpdated ? `${p.date} · 改 ${p.updated}` : p.date;
     li.append(title, meta);
     li.onclick = () => openPost(p.file);
     ul.appendChild(li);

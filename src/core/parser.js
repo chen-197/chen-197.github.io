@@ -46,9 +46,18 @@ function tokensToText(tokens) {
 const DAY_MS = 24 * 60 * 60 * 1000;
 
 /**
- * 文章的实际修改时间：已提交且无本地改动的文件取 git 最后提交时间
+ * 文章的实际修改时间：front-matter 写了 updated 就用它，否则自动检测。
+ * 站点列表排序、RSS、后台列表都走这个函数，保证各处口径一致。
+ */
+function resolveUpdated(data, filePath, repoRoot) {
+  return data.updated ? new Date(data.updated) : lastModified(filePath, repoRoot);
+}
+
+/**
+ * 自动检测的修改时间：已提交且无本地改动的文件取 git 最后提交时间
  * （跨机器可复现，CI 上也正确——git 不保存 mtime，全新 checkout 的文件时间都相同）；
  * 未提交、未跟踪或 git 不可用时退回文件系统 mtime。
+ * 注意：同一个提交里的多个文件会拿到相同的时间，此时它们之间的先后由创建时间决定。
  */
 function lastModified(filePath, repoRoot) {
   try {
@@ -84,8 +93,7 @@ function parseMarkdown(filePath, repoRoot) {
   const fileDate = match && match[1] ? new Date(match[1]) : null;
   const stat = fs.statSync(filePath);
   const date = data.date ? new Date(data.date) : fileDate || stat.mtime;
-  // 修改时间：front-matter 的 updated 优先，否则自动检测
-  const updated = data.updated ? new Date(data.updated) : lastModified(filePath, repoRoot);
+  const updated = resolveUpdated(data, filePath, repoRoot);
 
   // 一次解析，同时拿到 token（供摘要取正文）与 HTML
   const env = {};
@@ -142,4 +150,4 @@ function renderMarkdown(text) {
   return md.render(text);
 }
 
-module.exports = { loadPosts, loadPages, renderMarkdown };
+module.exports = { loadPosts, loadPages, renderMarkdown, resolveUpdated };
