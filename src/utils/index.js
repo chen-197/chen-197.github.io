@@ -65,10 +65,10 @@ function escapeXml(str) {
     .replace(/'/g, '&apos;');
 }
 
-/** 去掉 HTML 标签得到纯文本摘要 */
-function toExcerpt(html, length = 160) {
-  const text = html.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
-  return text.length > length ? text.slice(0, length) + '…' : text;
+/** 把纯文本压成单行并截断为摘要（取摘要请传正文纯文本，不要传 HTML） */
+function toExcerpt(text, length = 160) {
+  const normalized = String(text).replace(/\s+/g, ' ').trim();
+  return normalized.length > length ? normalized.slice(0, length) + '…' : normalized;
 }
 
 function debounce(fn, ms) {

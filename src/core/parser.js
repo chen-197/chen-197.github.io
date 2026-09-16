@@ -23,6 +23,26 @@ function toList(value) {
   return Array.isArray(value) ? value.map(String) : [String(value)];
 }
 
+/**
+ * 摘要用的正文纯文本。
+ * 代码块（fence / code_block）与原始 HTML 不计入；目录的内容由渲染器生成，
+ * 对应的 token（tocOpen / tocBody / tocClose）本身是空的，天然被排除。
+ * 同一个 inline 里的子节点直接相接（文字里已带原有空格），不同块之间才补空格。
+ */
+function tokensToText(tokens) {
+  const blocks = [];
+  for (const token of tokens) {
+    if (token.type !== 'inline') continue;
+    let text = '';
+    for (const child of token.children || []) {
+      if (child.type === 'text' || child.type === 'code_inline') text += child.content;
+      else if (child.type === 'softbreak' || child.type === 'hardbreak') text += ' ';
+    }
+    if (text.trim()) blocks.push(text.trim());
+  }
+  return blocks.join(' ');
+}
+
 const DAY_MS = 24 * 60 * 60 * 1000;
 
 /**
@@ -67,7 +87,10 @@ function parseMarkdown(filePath, repoRoot) {
   // 修改时间：front-matter 的 updated 优先，否则自动检测
   const updated = data.updated ? new Date(data.updated) : lastModified(filePath, repoRoot);
 
-  const html = md.render(content);
+  // 一次解析，同时拿到 token（供摘要取正文）与 HTML
+  const env = {};
+  const tokens = md.parse(content, env);
+  const html = md.renderer.render(tokens, md.options, env);
   const year = formatDate(date, 'YYYY');
   const month = formatDate(date, 'MM');
 
@@ -88,7 +111,7 @@ function parseMarkdown(filePath, repoRoot) {
     // 文章：/posts/2026/09/slug/ ；页面：/slug/
     url: data.date || fileDate ? `/posts/${year}/${month}/${slug}/` : `/${slug}/`,
     content: html,
-    excerpt: data.description || toExcerpt(html),
+    excerpt: data.description || toExcerpt(tokensToText(tokens)),
   };
 }
 
