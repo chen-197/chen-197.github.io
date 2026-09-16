@@ -1,0 +1,28 @@
+{
+  "name": "blog",
+  "version": "1.0.0",
+  "description": "自研 Node.js 静态博客生成器",
+  "main": "src/cli.js",
+  "scripts": {
+    "build": "node src/cli.js build",
+    "serve": "node src/cli.js serve",
+    "new": "node src/cli.js new",
+    "admin": "node src/cli.js admin"
+  },
+  "keywords": ["blog", "static-site-generator"],
+  "author": "chen",
+  "license": "MIT",
+  "type": "commonjs",
+  "dependencies": {
+    "chokidar": "^5.0.0",
+    "dayjs": "^1.11.23",
+    "ejs": "^6.0.1",
+    "express": "^5.2.1",
+    "gray-matter": "^4.0.3",
+    "highlight.js": "^11.12.0",
+    "markdown-it": "^15.0.2",
+    "markdown-it-anchor": "^10.0.0",
+    "markdown-it-highlightjs": "^4.3.0",
+    "markdown-it-toc-done-right": "^4.2.0"
+  }
+}

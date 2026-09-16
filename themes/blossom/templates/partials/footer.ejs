@@ -1,0 +1,36 @@
+</main>
+<footer class="site-footer">
+  <div class="container">
+    <svg class="flower flower-small" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+      <g fill="currentColor">
+        <ellipse cx="12" cy="6.2" rx="2.7" ry="4.2"></ellipse>
+        <ellipse cx="12" cy="6.2" rx="2.7" ry="4.2" transform="rotate(72 12 12)"></ellipse>
+        <ellipse cx="12" cy="6.2" rx="2.7" ry="4.2" transform="rotate(144 12 12)"></ellipse>
+        <ellipse cx="12" cy="6.2" rx="2.7" ry="4.2" transform="rotate(216 12 12)"></ellipse>
+        <ellipse cx="12" cy="6.2" rx="2.7" ry="4.2" transform="rotate(288 12 12)"></ellipse>
+      </g>
+      <circle cx="12" cy="12" r="2.3" fill="#ffcf5c"></circle>
+    </svg>
+    <p>&copy; <%= new Date().getFullYear() %> <%= site.author %> · 由 Node.js 静态生成器驱动 · <a href="/feed.xml">RSS</a></p>
+  </div>
+</footer>
+<% if (typeof math !== 'undefined' && math) { %>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
+  onload="renderMathInElement(document.body, { delimiters: [{ left: '$$', right: '$$', display: true }, { left: '$', right: '$', display: false }], throwOnError: false });"></script>
+<% } %>
+<% if (dev) { %>
+<script>
+  // 本地预览热更新：轮询构建版本，变化即刷新
+  let __v = null;
+  setInterval(async () => {
+    try {
+      const r = await fetch('/__version').then((res) => res.json());
+      if (__v === null) __v = r.version;
+      else if (r.version !== __v) location.reload();
+    } catch (e) { /* 服务重启中，忽略 */ }
+  }, 1000);
+</script>
+<% } %>
+</body>
+</html>
