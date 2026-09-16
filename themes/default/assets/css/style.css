@@ -1,0 +1,535 @@
+/* ============================================================
+   花园暖色主题 · Default
+   米色纸面 / 叶绿 / 陶土玫瑰 / 暖阳金
+   取向：纸本园艺笔记——衬线标题、细描边卡片、克制的动效
+   ============================================================ */
+
+:root {
+  --bg: #f7f2e8;            /* 米色纸面 */
+  --bg-soft: #f2ebdc;       /* 稍深的米色（页脚） */
+  --card: #fffdf8;          /* 暖白卡片 */
+  --text: #3a332b;          /* 墨褐（正文） */
+  --text-light: #7a6c58;    /* 暖褐灰（次要文字，对比度 4.6:1） */
+  --clay: #b4645a;          /* 陶土玫瑰（主色） */
+  --clay-deep: #96493f;     /* 深陶土（链接、强调，对比度 5.7:1） */
+  --clay-soft: #f5e3dd;     /* 浅陶土（标签底） */
+  --leaf: #6b8f5e;          /* 叶绿 */
+  --leaf-deep: #4f6f45;     /* 深叶绿（悬停，对比度 5.1:1） */
+  --leaf-soft: #e9efe1;     /* 浅叶绿（引用、目录底） */
+  --sun: #d9a441;           /* 暖阳金（点缀） */
+  --border: #e6dcc9;        /* 暖沙描边 */
+  --shadow: 0 2px 10px rgba(122, 96, 68, 0.07);
+  --shadow-lift: 0 8px 20px rgba(122, 96, 68, 0.13);
+  --radius: 12px;
+  --radius-sm: 8px;
+  --ease: cubic-bezier(0.32, 0.72, 0.35, 1);
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: "Noto Sans SC", "PingFang SC", "Hiragino Sans GB",
+    "Microsoft YaHei", system-ui, sans-serif;
+  font-size: 16.5px;
+  line-height: 1.85;
+  color: var(--text);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 页眉顶端的陶土 + 叶绿双色织带 */
+body::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 5px;
+  background: linear-gradient(180deg, var(--clay) 0 3px, var(--leaf) 3px 5px);
+}
+
+.container {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+a { color: var(--clay-deep); text-decoration: none; transition: color 0.2s var(--ease); }
+a:hover { color: var(--leaf-deep); }
+
+::selection { background: #f0ddd5; }
+
+img { max-width: 100%; height: auto; border-radius: var(--radius-sm); }
+
+/* ===== 头部 ===== */
+.site-header {
+  position: relative;
+  overflow: hidden;
+  padding: 36px 0 26px;
+  margin-bottom: 40px;
+  border-bottom: 1px solid var(--border);
+  background:
+    radial-gradient(ellipse 70% 130% at 92% -20%, rgba(107, 143, 94, 0.10), transparent 62%),
+    radial-gradient(ellipse 50% 110% at 4% -30%, rgba(217, 164, 65, 0.10), transparent 58%);
+}
+.site-header .container {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px 20px;
+}
+.site-brand { display: flex; flex-direction: column; gap: 3px; }
+.site-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: "Noto Serif SC", "Songti SC", "SimSun", Georgia, serif;
+  font-size: 25px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: var(--text);
+}
+.site-title:hover { color: var(--leaf-deep); }
+.site-title:hover .leaf-mark { transform: rotate(-8deg) scale(1.06); }
+
+/* 品牌叶片：叶身用 currentColor，叶脉留浅色，悬停只做轻微摆动 */
+.leaf-mark {
+  color: var(--leaf);
+  flex-shrink: 0;
+  transition: transform 0.45s var(--ease);
+}
+.leaf-mark .vein { stroke: rgba(255, 253, 248, 0.7); }
+
+.site-subtitle {
+  margin: 0 0 0 36px;
+  font-size: 13.5px;
+  color: var(--text-light);
+  letter-spacing: 1.5px;
+}
+
+/* 头部右侧的枝叶水印 */
+.header-sprig {
+  position: absolute;
+  right: -26px;
+  top: -30px;
+  width: 200px;
+  height: 200px;
+  color: var(--leaf);
+  opacity: 0.09;
+  transform: rotate(12deg);
+  pointer-events: none;
+}
+
+/* 导航：不用胶囊，用从左生长的下划线 */
+.site-nav { display: flex; flex-wrap: wrap; gap: 4px; }
+.site-nav a {
+  position: relative;
+  padding: 5px 13px;
+  color: var(--text-light);
+  font-size: 15px;
+  transition: color 0.2s var(--ease);
+}
+.site-nav a::after {
+  content: "";
+  position: absolute;
+  left: 13px;
+  right: 13px;
+  bottom: 3px;
+  height: 1.5px;
+  background: var(--leaf);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.28s var(--ease);
+}
+.site-nav a:hover { color: var(--leaf-deep); }
+.site-nav a:hover::after { transform: scaleX(1); }
+
+/* ===== 首页文章卡片 ===== */
+.post-card {
+  position: relative;
+  padding: 24px 28px 22px;
+  margin-bottom: 20px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  transition: transform 0.28s var(--ease), box-shadow 0.28s var(--ease),
+    border-color 0.28s var(--ease);
+}
+/* 左侧陶土色书脊，悬停长成叶绿 */
+.post-card::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 3px;
+  background: var(--clay);
+  transition: width 0.28s var(--ease), background 0.28s var(--ease);
+}
+.post-card:hover {
+  transform: translateY(-3px);
+  border-color: #ddd0b8;
+  box-shadow: var(--shadow-lift);
+}
+.post-card:hover::before { width: 6px; background: var(--leaf); }
+
+.post-card-title {
+  margin: 0 0 9px;
+  font-family: "Noto Serif SC", "Songti SC", "SimSun", Georgia, serif;
+  font-size: 21px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+.post-card-title a { color: var(--text); }
+.post-card-title a:hover { color: var(--clay-deep); }
+
+.post-meta {
+  margin: 0 0 12px;
+  font-size: 14px;
+  color: var(--text-light);
+}
+.post-meta time {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+/* 日期前的小叶片 */
+.post-meta time:first-child::before {
+  content: "";
+  width: 9px; height: 9px;
+  border-radius: 50% 0 50% 50%;
+  background: var(--leaf);
+  opacity: 0.75;
+  transform: rotate(-45deg);
+}
+.meta-link { color: var(--text-light); }
+.meta-link:hover { color: var(--clay-deep); }
+
+.tag {
+  display: inline-block;
+  margin-left: 8px;
+  padding: 1px 11px;
+  font-size: 13px;
+  line-height: 21px;
+  color: var(--clay-deep);
+  background: var(--clay-soft);
+  border-radius: 5px;
+  transition: background 0.2s var(--ease), color 0.2s var(--ease);
+}
+.tag:hover { background: var(--leaf-soft); color: var(--leaf-deep); }
+
+.post-excerpt { margin: 0 0 12px; color: var(--text-light); }
+.read-more { font-size: 14.5px; font-weight: 500; color: var(--clay-deep); }
+.read-more::after {
+  content: "→";
+  display: inline-block;
+  margin-left: 5px;
+  transition: transform 0.25s var(--ease);
+}
+.read-more:hover::after { transform: translateX(4px); }
+
+/* ===== 分页 ===== */
+.pagination {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 26px 4px 10px;
+  color: var(--text-light);
+  font-size: 15px;
+}
+.pagination a {
+  padding: 6px 16px;
+  border-radius: var(--radius-sm);
+  background: var(--card);
+  border: 1px solid var(--border);
+  color: var(--clay-deep);
+  transition: background 0.2s var(--ease), border-color 0.2s var(--ease),
+    transform 0.25s var(--ease);
+}
+.pagination a:hover {
+  background: var(--leaf-soft);
+  border-color: #cfdcc4;
+  color: var(--leaf-deep);
+  transform: translateY(-2px);
+}
+
+/* ===== 文章页 ===== */
+.page-title {
+  font-family: "Noto Serif SC", "Songti SC", "SimSun", Georgia, serif;
+  font-size: 27px;
+  font-weight: 700;
+  margin: 0 0 28px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--leaf-soft);
+}
+.post-title {
+  font-family: "Noto Serif SC", "Songti SC", "SimSun", Georgia, serif;
+  font-size: 30px;
+  font-weight: 700;
+  margin: 0 0 12px;
+  line-height: 1.45;
+}
+
+.post-content { font-size: 16.5px; }
+.post-content h1,
+.post-content h2,
+.post-content h3,
+.post-content h4 {
+  font-family: "Noto Serif SC", "Songti SC", "SimSun", Georgia, serif;
+  margin: 1.8em 0 0.65em;
+  line-height: 1.45;
+  font-weight: 600;
+}
+.post-content h2 {
+  font-size: 22px;
+  color: var(--clay-deep);
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 8px;
+}
+.post-content h2::before {
+  content: "❧";
+  margin-right: 10px;
+  color: var(--leaf);
+  font-size: 19px;
+  vertical-align: 1px;
+}
+.post-content h3 { font-size: 19px; }
+.post-content h3::before {
+  content: "";
+  display: inline-block;
+  width: 7px; height: 7px;
+  margin-right: 10px;
+  border-radius: 50% 0 50% 50%;
+  background: var(--sun);
+  transform: rotate(-45deg);
+  vertical-align: 2px;
+}
+.post-content h4 { font-size: 17px; }
+.post-content p { margin: 1em 0; }
+.post-content ul, .post-content ol { padding-left: 1.7em; }
+.post-content li { margin: 0.35em 0; }
+.post-content li::marker { color: var(--leaf); }
+
+.post-content blockquote {
+  margin: 1.2em 0;
+  padding: 10px 22px;
+  font-family: "Noto Serif SC", "Songti SC", Georgia, serif;
+  font-style: italic;
+  color: #5d5344;
+  background: var(--leaf-soft);
+  border-left: 3px solid var(--leaf);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+}
+.post-content blockquote p { margin: 0.5em 0; }
+
+.post-content code {
+  padding: 2px 7px;
+  font-size: 0.88em;
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+  color: var(--clay-deep);
+  background: #f4ebdc;
+  border: 1px solid #ece0cc;
+  border-radius: 5px;
+}
+.post-content pre {
+  padding: 16px 18px;
+  overflow-x: auto;
+  background: #fbf6ec;
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--sun);
+  border-radius: var(--radius-sm);
+  line-height: 1.6;
+}
+.post-content pre code {
+  padding: 0;
+  color: inherit;
+  background: none;
+  border: none;
+  font-size: 0.92em;
+}
+
+.post-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.2em 0;
+  font-size: 15px;
+}
+.post-content th, .post-content td {
+  padding: 9px 13px;
+  border: 1px solid var(--border);
+  text-align: left;
+}
+.post-content th { background: var(--leaf-soft); color: var(--leaf-deep); font-weight: 500; }
+.post-content tr:nth-child(even) td { background: rgba(242, 235, 220, 0.5); }
+
+.post-content hr {
+  border: none;
+  margin: 2.4em auto;
+  width: 40%;
+  border-top: 1px solid var(--border);
+  position: relative;
+}
+
+/* 文章目录 [[toc]] */
+.toc {
+  padding: 14px 22px;
+  background: var(--leaf-soft);
+  border: 1px solid #d8e3cd;
+  border-left: 3px solid var(--leaf);
+  border-radius: var(--radius-sm);
+  font-size: 14.5px;
+}
+.toc ul { list-style: none; padding-left: 1.2em; margin: 0.3em 0; }
+.toc > ul { padding-left: 0.2em; }
+.toc a { color: var(--text-light); }
+.toc a:hover { color: var(--leaf-deep); }
+
+/* 数学公式 */
+.katex-display { margin: 1.3em 0; overflow-x: auto; overflow-y: hidden; padding: 2px 0; }
+
+/* 上一篇 / 下一篇：只渲染实际存在的一侧，不留空盒子 */
+.post-nav {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  margin: 38px 0;
+}
+.post-nav-item {
+  flex: 1 1 0;
+  min-width: 0;
+  padding: 13px 16px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-size: 14.5px;
+  line-height: 1.5;
+  color: var(--text-light);
+  transition: transform 0.25s var(--ease), border-color 0.25s var(--ease),
+    color 0.2s var(--ease);
+}
+.post-nav-item.next { text-align: right; }
+.post-nav-item:hover {
+  transform: translateY(-2px);
+  border-color: #d3c7ae;
+  color: var(--clay-deep);
+}
+
+.comments { margin-top: 44px; }
+
+/* ===== 归档 ===== */
+.archive-year {
+  font-family: "Noto Serif SC", "Songti SC", Georgia, serif;
+  font-size: 22px;
+  font-weight: 700;
+  margin: 34px 0 14px;
+  color: var(--leaf-deep);
+}
+.archive-year::before {
+  content: "";
+  display: inline-block;
+  width: 3px; height: 19px;
+  margin-right: 11px;
+  background: var(--clay);
+  border-radius: 2px;
+  vertical-align: -3px;
+}
+.archive-year small { font-size: 14px; color: var(--text-light); font-weight: 400; margin-left: 8px; }
+.archive-list { list-style: none; padding: 0; margin: 0; }
+.archive-list li {
+  display: flex;
+  gap: 16px;
+  padding: 9px 16px;
+  margin-bottom: 5px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-left: 2px solid transparent;
+  border-radius: var(--radius-sm);
+  transition: border-color 0.2s var(--ease), transform 0.2s var(--ease);
+}
+.archive-list li:hover { border-left-color: var(--leaf); transform: translateX(4px); }
+.archive-list time {
+  flex-shrink: 0;
+  width: 96px;
+  color: var(--text-light);
+  font-size: 14px;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ===== 标签 / 分类云 ===== */
+.term-cloud { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 11px; }
+.term-cloud li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 17px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  transition: transform 0.22s var(--ease), background 0.22s var(--ease),
+    border-color 0.22s var(--ease);
+}
+.term-cloud li:hover {
+  transform: translateY(-2px);
+  background: var(--leaf-soft);
+  border-color: #d3e0c7;
+}
+.term-cloud a { color: var(--clay-deep); }
+.term-cloud li:hover a { color: var(--leaf-deep); }
+.term-count {
+  font-size: 13px;
+  color: var(--text-light);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ===== 其他 ===== */
+.empty { color: var(--text-light); text-align: center; padding: 40px 0; }
+.not-found { text-align: center; padding: 70px 0; }
+.not-found .page-title {
+  font-size: 62px;
+  color: var(--clay);
+  border: none;
+  margin-bottom: 6px;
+}
+.not-found .leaf-mark { color: var(--leaf); opacity: 0.5; display: block; margin: 0 auto 12px; }
+
+.site-footer {
+  margin-top: 58px;
+  padding: 30px 0 34px;
+  border-top: 1px solid var(--border);
+  color: var(--text-light);
+  font-size: 14px;
+  text-align: center;
+  background: var(--bg-soft);
+}
+.site-footer .leaf-mark { color: var(--leaf); margin-bottom: 6px; }
+.site-footer p { margin: 6px 0 0; }
+
+/* 滚动条 */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb {
+  background: #ded1b8;
+  border-radius: 8px;
+  border: 2px solid var(--bg);
+}
+::-webkit-scrollbar-thumb:hover { background: var(--leaf); }
+
+/* ===== 移动端 ===== */
+@media (max-width: 600px) {
+  body { font-size: 16px; }
+  .site-header { padding-top: 24px; }
+  .site-header .container { flex-direction: column; align-items: flex-start; }
+  .site-subtitle { margin-left: 0; }
+  .site-nav { width: 100%; margin-left: -13px; }
+  .header-sprig { width: 140px; height: 140px; right: -18px; }
+  .post-title { font-size: 25px; }
+  .page-title { font-size: 23px; }
+  .post-card { padding: 20px 18px 18px; }
+  .archive-list li { flex-direction: column; gap: 2px; }
+  .archive-list time { width: auto; }
+}

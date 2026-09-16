@@ -1,0 +1,15 @@
+<%- include('partials/head.ejs') %>
+<%- include('partials/header.ejs') %>
+
+<h1 class="page-title">标签：<%= name %></h1>
+
+<ul class="archive-list">
+  <% posts.forEach((p) => { %>
+    <li>
+      <time datetime="<%= p.date.toISOString() %>"><%= p.dateFormatted %></time>
+      <a href="<%= p.url %>"><%= p.title %></a>
+    </li>
+  <% }) %>
+</ul>
+
+<%- include('partials/footer.ejs') %>

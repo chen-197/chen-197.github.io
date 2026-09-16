@@ -1,0 +1,38 @@
+<%- include('partials/head.ejs') %>
+<%- include('partials/header.ejs') %>
+
+<% if (posts.length === 0) { %>
+  <p class="empty">还没有文章，去 <code>content/posts/</code> 写一篇吧。</p>
+<% } %>
+
+<% posts.forEach((post) => { %>
+  <article class="post-card">
+    <h2 class="post-card-title"><a href="<%= post.url %>"><%= post.title %></a></h2>
+    <p class="post-meta">
+      <time datetime="<%= post.date.toISOString() %>"><%= post.dateFormatted %></time>
+      <% if (post.isUpdated) { %> · 更新于 <time datetime="<%= post.updated.toISOString() %>"><%= post.updatedFormatted %></time><% } %>
+      <% post.categories.forEach((c) => { %>
+        · <a class="meta-link" href="/categories/<%= encodeURIComponent(c) %>/"><%= c %></a>
+      <% }) %>
+      <% post.tags.forEach((t) => { %>
+        <a class="tag" href="/tags/<%= encodeURIComponent(t) %>/">#<%= t %></a>
+      <% }) %>
+    </p>
+    <p class="post-excerpt"><%= post.excerpt %></p>
+    <a class="read-more" href="<%= post.url %>">阅读全文</a>
+  </article>
+<% }) %>
+
+<% if (pagination.total > 1) { %>
+  <nav class="pagination">
+    <% if (pagination.current > 1) { %>
+      <a href="<%= pagination.current === 2 ? '/' : '/page/' + (pagination.current - 1) + '/' %>">← 上一页</a>
+    <% } %>
+    <span>第 <%= pagination.current %> / <%= pagination.total %> 页</span>
+    <% if (pagination.current < pagination.total) { %>
+      <a href="/page/<%= pagination.current + 1 %>/">下一页 →</a>
+    <% } %>
+  </nav>
+<% } %>
+
+<%- include('partials/footer.ejs') %>

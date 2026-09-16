@@ -1,0 +1,17 @@
+<%- include('partials/head.ejs') %>
+<%- include('partials/header.ejs') %>
+
+<h1 class="page-title">标签</h1>
+
+<% if (list.length === 0) { %><p class="empty">还没有标签。</p><% } %>
+
+<ul class="term-cloud">
+  <% list.forEach((item) => { %>
+    <li>
+      <a href="/tags/<%= encodeURIComponent(item.name) %>/">#<%= item.name %></a>
+      <span class="term-count"><%= item.count %></span>
+    </li>
+  <% }) %>
+</ul>
+
+<%- include('partials/footer.ejs') %>

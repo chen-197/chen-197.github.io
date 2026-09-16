@@ -73,7 +73,9 @@ description: 可选，自定义摘要（默认自动截取正文）
 
 内置两套主题，在 `blog.config.js` 把 `build.theme` 改成主题名即可：
 
-- `default` —— 花园暖色：米色纸面、叶绿、陶土玫瑰
+- `default` —— 花园暖色：米色纸面、叶绿、陶土玫瑰。纸本园艺笔记的气质，标题用衬线体（Noto Serif SC），卡片细描边配左侧陶土色书脊，动效克制
 - `blossom` —— 粉色鲜花：樱花粉白、玫瑰粉、花芯黄，圆角与弹跳动效
+
+两套主题共用同一套模板变量与 class 结构，只是视觉取向不同：`default` 静，`blossom` 活泼。
 
 想自己做主题：复制 `themes/default` 为 `themes/xxx`，改 `build.theme` 为 `xxx`。模板里可用的全局数据：`site`、`giscus`、`dev`、`encodeURIComponent`。

@@ -1,0 +1,26 @@
+<%- include('partials/head.ejs') %>
+<%- include('partials/header.ejs') %>
+
+<h1 class="page-title">归档</h1>
+
+<%
+  const byYear = {};
+  posts.forEach((p) => { (byYear[p.year] = byYear[p.year] || []).push(p); });
+  const years = Object.keys(byYear).sort((a, b) => b - a);
+%>
+
+<% years.forEach((year) => { %>
+  <h2 class="archive-year"><%= year %> <small>（<%= byYear[year].length %> 篇）</small></h2>
+  <ul class="archive-list">
+    <% byYear[year].forEach((p) => { %>
+      <li>
+        <time datetime="<%= p.date.toISOString() %>"><%= p.dateFormatted %></time>
+        <a href="<%= p.url %>"><%= p.title %></a>
+      </li>
+    <% }) %>
+  </ul>
+<% }) %>
+
+<% if (years.length === 0) { %><p class="empty">还没有文章。</p><% } %>
+
+<%- include('partials/footer.ejs') %>
