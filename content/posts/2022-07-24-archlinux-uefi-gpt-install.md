@@ -1,6 +1,7 @@
 ---
 title: UEFI-GPT安装Archlinux简易教程
 date: 2022-07-24
+updated: 2026-09-16 00:37
 tags: [Linux, Arch Linux]
 categories: 技术
 ---

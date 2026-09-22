@@ -55,7 +55,9 @@ async function openPost(file) {
     state.current = file;
     $('#title').value = p.title;
     $('#date').value = p.date;
-    $('#updated').value = p.updated || '';
+    // 「更新于」不回填：留空表示保存时写入当前时间，当前值放在 placeholder 里提示
+    $('#updated').value = '';
+    $('#updated').placeholder = `留空 = 保存时间（当前 ${p.updated}）`;
     $('#tags').value = p.tags.join(', ');
     $('#categories').value = p.categories.join(', ');
     $('#draft').checked = p.draft;
@@ -74,6 +76,7 @@ function newPost() {
   $('#title').value = '';
   $('#date').value = fmtDate();
   $('#updated').value = '';
+  $('#updated').placeholder = '留空 = 创建时间';
   $('#tags').value = '';
   $('#categories').value = '';
   $('#draft').checked = true;

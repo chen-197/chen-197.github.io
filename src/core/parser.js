@@ -1,6 +1,5 @@
 const fs = require('fs');
 const path = require('path');
-const { spawnSync } = require('child_process');
 const matter = require('gray-matter');
 
 // 部分插件新版本为 ESM 双包，做 default 兼容
@@ -46,44 +45,21 @@ function tokensToText(tokens) {
 const DAY_MS = 24 * 60 * 60 * 1000;
 
 /**
- * 文章的实际修改时间：front-matter 写了 updated 就用它，否则自动检测。
+ * 文章的实际修改时间：直接取 front-matter 里的 updated。
+ * 没写就视为「创建后没改过」，等于创建时间。
+ * 修改时间由后台保存时写进 .md，不再依赖 git 提交时间或文件 mtime，
+ * 所以跨机器、CI 上结果一致，一次提交多篇也不会拿到同一个时间。
  * 站点列表排序、RSS、后台列表都走这个函数，保证各处口径一致。
  */
-function resolveUpdated(data, filePath, repoRoot) {
-  return data.updated ? new Date(data.updated) : lastModified(filePath, repoRoot);
-}
-
-/**
- * 自动检测的修改时间：已提交且无本地改动的文件取 git 最后提交时间
- * （跨机器可复现，CI 上也正确——git 不保存 mtime，全新 checkout 的文件时间都相同）；
- * 未提交、未跟踪或 git 不可用时退回文件系统 mtime。
- * 注意：同一个提交里的多个文件会拿到相同的时间，此时它们之间的先后由创建时间决定。
- */
-function lastModified(filePath, repoRoot) {
-  try {
-    const status = spawnSync('git', ['status', '--porcelain', '--', filePath], {
-      cwd: repoRoot,
-      encoding: 'utf8',
-    });
-    if (status.status === 0 && !status.stdout.trim()) {
-      const log = spawnSync('git', ['log', '-1', '--format=%cI', '--', filePath], {
-        cwd: repoRoot,
-        encoding: 'utf8',
-      });
-      const d = (log.stdout || '').trim();
-      if (log.status === 0 && d) return new Date(d);
-    }
-  } catch (e) {
-    /* git 不可用，走文件时间 */
-  }
-  return fs.statSync(filePath).mtime;
+function resolveUpdated(data, date) {
+  return data.updated ? new Date(data.updated) : new Date(date);
 }
 
 /**
  * 解析单个 markdown 文件为文章/页面对象。
  * 文件名约定：YYYY-MM-DD-slug.md（日期前缀可省略，省略时取 front-matter 或文件时间）
  */
-function parseMarkdown(filePath, repoRoot) {
+function parseMarkdown(filePath) {
   const raw = fs.readFileSync(filePath, 'utf8');
   const { data, content } = matter(raw);
   const basename = path.basename(filePath);
@@ -93,7 +69,7 @@ function parseMarkdown(filePath, repoRoot) {
   const fileDate = match && match[1] ? new Date(match[1]) : null;
   const stat = fs.statSync(filePath);
   const date = data.date ? new Date(data.date) : fileDate || stat.mtime;
-  const updated = resolveUpdated(data, filePath, repoRoot);
+  const updated = resolveUpdated(data, date);
 
   // 一次解析，同时拿到 token（供摘要取正文）与 HTML
   const env = {};
@@ -133,16 +109,14 @@ function scanDir(dir) {
 
 /** 加载全部文章，按修改时间倒序（同日再按创建时间倒序）；drafts=true 时包含草稿 */
 function loadPosts(contentDir, { drafts = false } = {}) {
-  const repoRoot = path.resolve(contentDir, '..');
   return scanDir(path.join(contentDir, 'posts'))
-    .map((f) => parseMarkdown(f, repoRoot))
+    .map((f) => parseMarkdown(f))
     .filter((p) => drafts || !p.draft)
     .sort((a, b) => b.updated - a.updated || b.date - a.date);
 }
 
 function loadPages(contentDir) {
-  const repoRoot = path.resolve(contentDir, '..');
-  return scanDir(path.join(contentDir, 'pages')).map((f) => parseMarkdown(f, repoRoot));
+  return scanDir(path.join(contentDir, 'pages')).map((f) => parseMarkdown(f));
 }
 
 /** 解析一份 markdown 文本（供后台预览用） */

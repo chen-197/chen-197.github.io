@@ -1,6 +1,7 @@
 ---
 title: 编写.service文件
 date: 2022-07-25
+updated: 2026-09-16 00:59
 tags: [Linux, systemd]
 categories: 技术
 ---

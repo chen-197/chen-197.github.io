@@ -1,6 +1,7 @@
 ---
 title: 你好，博客
 date: 2026-09-15 12:00
+updated: 2026-09-15 12:34
 tags: [随笔, 开始]
 categories: 生活
 draft: false

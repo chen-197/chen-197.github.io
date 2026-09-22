@@ -44,7 +44,7 @@ function start(config) {
         const filePath = path.join(postsDir, f);
         const { data } = matter(fs.readFileSync(filePath, 'utf8'));
         const date = new Date(data.date || f.slice(0, 10));
-        const updated = resolveUpdated(data, filePath, config.root);
+        const updated = resolveUpdated(data, date);
         return {
           file: f,
           title: data.title || f,
@@ -103,12 +103,17 @@ function start(config) {
       const data = {
         title: title.trim(),
         date: dateStr,
+        // 修改时间直接写进 .md，不依赖 git/mtime：
+        // 新建时等于创建时间；保存已有文章时取当前时间；在「更新于」里手填则用填的值
+        updated: updated && String(updated).trim()
+          ? dayjs(String(updated).trim()).format('YYYY-MM-DD HH:mm')
+          : file
+            ? dayjs().format('YYYY-MM-DD HH:mm')
+            : dateStr,
         tags: [].concat(tags || []),
         categories: [].concat(categories || []),
         draft: !!draft,
       };
-      // 修改时间：留空则交给构建时自动检测
-      if (updated && String(updated).trim()) data.updated = String(updated).trim();
       fs.writeFileSync(path.join(postsDir, target), matter.stringify(content || '', data));
 
       const info = await rebuild();
